@@ -18,7 +18,6 @@ Then open: http://localhost:5173
 ## Customize
 
 - `index.html`
-  - Replace name/title/bio
   - Update GitHub/LinkedIn links
   - Replace placeholder projects
   - Set your email in the `mailto:` links
@@ -26,8 +25,4 @@ Then open: http://localhost:5173
 
 ## Deploy
 
-You can deploy this folder to:
-- GitHub Pages
-- Netlify
-- Vercel (as static)
-- Any static host
+Currently its in progress in desiging and adding photos

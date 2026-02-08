@@ -1,197 +1,157 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tarun — Portfolio</title>
-    <meta name="description" content="Tarun's personal portfolio: projects, skills, and contact." />
+    <meta name="description" content="Tarun's personal portfolio: projects, skills, and contact.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-
-    <header class="site-header">
-      <nav class="nav" aria-label="Primary">
+<header class="site-header">
+    <nav class="nav" aria-label="Primary">
         <a class="brand" href="#top">Tarun Kishore Bollur Nagesh</a>
-        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links">
-          Menu
-        </button>
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
         <div id="nav-links" class="nav__links">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-          <button class="chip" type="button" id="theme-toggle" aria-label="Toggle theme">Theme</button>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+            <button class="chip" id="theme-toggle" aria-label="Toggle theme">Theme</button>
         </div>
-      </nav>
-    </header>
+    </nav>
+</header>
 
-    <main id="main">
-      <section id="top" class="hero section">
+<main id="main">
+    <section id="top" class="hero section">
         <div class="container hero__grid">
-          <div>
-            <p class="eyebrow">Software Developer</p>
-            <h1 class="hero__title">Hi, I’m <span class="accent">Tarun Kishore</span>.</h1>
-            <p class="hero__subtitle">
-              I build clean, reliable apps. I like Spring Boot, Kotlin, and shipping small things fast.
-            </p>
-            <div class="hero__cta">
-              <a class="btn btn--primary" href="#projects">View projects</a>
-              <a class="btn btn--ghost" href="#contact">Contact me</a>
-            </div>
-            <div class="hero__links" aria-label="Social links">
-              <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="#" aria-disabled="true" title="Add your resume link">Resume</a>
-            </div>
-          </div>
-
-          <div class="card hero__card">
-            <div class="avatar" aria-hidden="true">T</div>
             <div>
-              <h2 class="card__title">Quick info</h2>
-              <ul class="meta">
-                <li><span>Location:</span> Bay Area / Remote</li>
-                <li><span>Focus:</span> Backend + APIs</li>
-                <li><span>Currently:</span> Building portfolio projects</li>
-              </ul>
+                <p class="eyebrow">Software Developer</p>
+                <h1 class="hero__title">Hi, I’m <span class="accent">Tarun Kishore</span>.</h1>
+                <p class="hero__subtitle">I build clean, reliable apps. I like Spring Boot, Kotlin, and shipping small things fast.</p>
+                <div class="hero__cta">
+                    <a class="btn btn--primary" href="#projects">View projects</a>
+                    <a class="btn btn--ghost" href="#contact">Contact me</a>
+                </div>
+                <div class="hero__links">
+                    <a href="https://github.com/" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+                    <a href="#" aria-disabled="true">Resume</a>
+                </div>
             </div>
-          </div>
+            <div class="card hero__card">
+                <div class="avatar">T</div>
+                <div>
+                    <h2 class="card__title">Quick info</h2>
+                    <ul class="meta">
+                        <li><span>Location:</span> Bay Area / Remote</li>
+                        <li><span>Focus:</span> Backend + APIs</li>
+                        <li><span>Currently:</span> Building portfolio projects</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </section>
+    </section>
 
-      <section id="about" class="section">
+    <section id="about" class="section">
         <div class="container">
-          <h2>About</h2>
-          <p>
-            I’m a developer who enjoys turning requirements into working software. I care about clean code,
-            good defaults, and writing things that are easy to maintain.
-          </p>
-          <p>
-            This page is intentionally simple: a single file you can deploy anywhere.
-          </p>
+            <h2>About</h2>
+            <p>I’m a developer who enjoys turning requirements into working software. I care about clean code, good defaults, and writing things that are easy to maintain.</p>
+            <p>This page is intentionally simple: a single file you can deploy anywhere.</p>
         </div>
-      </section>
+    </section>
 
-      <section id="projects" class="section section--alt">
+    <section id="projects" class="section section--alt">
         <div class="container">
-          <div class="section__head">
             <h2>Projects</h2>
             <p class="muted">A few things I’ve built (replace these with your real projects).</p>
-          </div>
-
-          <div class="grid">
-            <article class="card project">
-              <h3 class="project__title">MyApp (Spring Boot)</h3>
-              <p class="muted">REST API + dependency injection + clean structure.</p>
-              <ul class="tags">
-                <li>Java</li>
-                <li>Spring Boot</li>
-                <li>REST</li>
-              </ul>
-              <div class="project__links">
-                <a href="#" aria-disabled="true">Code</a>
-                <a href="#" aria-disabled="true">Demo</a>
-              </div>
-            </article>
-
-            <article class="card project">
-              <h3 class="project__title">Portfolio Page</h3>
-              <p class="muted">Single-page responsive layout with accessibility basics.</p>
-              <ul class="tags">
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>Vanilla JS</li>
-              </ul>
-              <div class="project__links">
-                <a href="#" aria-disabled="true">Code</a>
-                <a href="#" aria-disabled="true">Live</a>
-              </div>
-            </article>
-
-            <article class="card project">
-              <h3 class="project__title">Kotlin Mini Tool</h3>
-              <p class="muted">A small CLI / utility (placeholder).</p>
-              <ul class="tags">
-                <li>Kotlin</li>
-                <li>Gradle</li>
-              </ul>
-              <div class="project__links">
-                <a href="#" aria-disabled="true">Code</a>
-                <a href="#" aria-disabled="true">Write-up</a>
-              </div>
-            </article>
-          </div>
+            <div class="grid">
+                <article class="card project">
+                    <h3>MyApp (Spring Boot)</h3>
+                    <p class="muted">REST API + dependency injection + clean structure.</p>
+                    <ul class="tags">
+                        <li>Java</li>
+                        <li>Spring Boot</li>
+                        <li>REST</li>
+                    </ul>
+                </article>
+                <article class="card project">
+                    <h3>Portfolio Page</h3>
+                    <p class="muted">Single-page responsive layout with accessibility basics.</p>
+                    <ul class="tags">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>Vanilla JS</li>
+                    </ul>
+                </article>
+                <article class="card project">
+                    <h3>Kotlin Mini Tool</h3>
+                    <p class="muted">A small CLI / utility (placeholder).</p>
+                    <ul class="tags">
+                        <li>Kotlin</li>
+                        <li>Gradle</li>
+                    </ul>
+                </article>
+            </div>
         </div>
-      </section>
+    </section>
 
-      <section id="skills" class="section">
+    <section id="skills" class="section">
         <div class="container">
-          <div class="section__head">
             <h2>Skills</h2>
-            <p class="muted">Pick the ones that are true for you.</p>
-          </div>
-
-          <div class="grid grid--2">
-            <div class="card">
-              <h3>Backend</h3>
-              <ul class="list">
-                <li>Java / Kotlin</li>
-                <li>Spring Boot</li>
-                <li>REST APIs</li>
-                <li>SQL basics</li>
-              </ul>
+            <div class="grid grid--2">
+                <div class="card">
+                    <h3>Backend</h3>
+                    <ul>
+                        <li>Java / Kotlin</li>
+                        <li>Spring Boot</li>
+                        <li>REST APIs</li>
+                        <li>SQL basics</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Engineering</h3>
+                    <ul>
+                        <li>Git</li>
+                        <li>Testing</li>
+                        <li>Debugging</li>
+                        <li>Clean code</li>
+                    </ul>
+                </div>
             </div>
-            <div class="card">
-              <h3>Engineering</h3>
-              <ul class="list">
-                <li>Git</li>
-                <li>Testing (unit/integration)</li>
-                <li>Debugging & logs</li>
-                <li>Clean code & refactoring</li>
-              </ul>
-            </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      <section id="contact" class="section section--alt">
+    <section id="contact" class="section section--alt">
         <div class="container">
-          <h2>Contact</h2>
-          <p>
-            The simplest contact method is email. You can also link your LinkedIn/GitHub above.
-          </p>
-
-          <div class="card contact">
-            <div>
-              <p class="muted">Email</p>
-              <p class="contact__big"><a href="mailto:tarunkb.go@gmail.com">tarunkb.go@gmail.com</a></p>
-              <p class="muted">Usually I reply fastest over email.</p>
+            <h2>Contact</h2>
+            <p>Email is the simplest contact method.</p>
+            <div class="card contact">
+                <div>
+                    <p class="muted">Email</p>
+                    <p><a href="mailto:tarunkb.go@gmail.com">tarunkb.go@gmail.com</a></p>
+                </div>
+                <div class="contact__actions">
+                    <a class="btn btn--primary" href="mailto:tarunkb.go@gmail.com">Send email</a>
+                    <button class="btn btn--ghost" id="copy-email">Copy email</button>
+                </div>
             </div>
-            <div class="contact__actions">
-              <a class="btn btn--primary" href="mailto:tarunkb.go@gmail.com">Send email</a>
-              <button class="btn btn--ghost" type="button" id="copy-email">Copy email</button>
-            </div>
-          </div>
-
-          <p class="fineprint muted">
-            © <span id="year"></span> Tarun. Built with plain HTML/CSS.
-          </p>
+            <p class="fineprint muted">© <span id="year"></span> Tarun. Built with plain HTML/CSS.</p>
         </div>
-      </section>
-    </main>
+    </section>
+</main>
 
-    <footer class="site-footer">
-      <div class="container">
+<footer class="site-footer">
+    <div class="container">
         <span class="muted">Made small on purpose.</span>
-      </div>
-    </footer>
+    </div>
+</footer>
 
-    <script src="script.js"></script>
-  </body>
+<script src="script.js"></script>
+</body>
 </html>
