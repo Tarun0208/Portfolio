@@ -1,13 +1,14 @@
 :root{
-  --bg: #0b1020;
-  --panel: #111a33;
-  --panel-2:#0f1730;
+  /* Darker black-shade background */
+  --bg: #05070f;
+  --panel: #0b1122;
+  --panel-2:#090f1f;
   --text: #e9ecf5;
   --muted:#aab3d1;
   --border: rgba(255,255,255,.10);
   --accent:#7c5cff;
   --accent-2:#39d0ff;
-  --shadow: 0 12px 30px rgba(0,0,0,.35);
+  --shadow: 0 12px 30px rgba(0,0,0,.45);
   --radius: 16px;
   --ring: rgba(57,208,255,.55);
 }
@@ -32,10 +33,25 @@ body{
   margin:0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color:var(--text);
+  /* Subtle grid + soft aurora gradients */
   background:
-    radial-gradient(1200px 600px at 20% -10%, color-mix(in oklab, var(--accent) 35%, transparent), transparent 55%),
-    radial-gradient(1000px 500px at 80% 0%, color-mix(in oklab, var(--accent-2) 22%, transparent), transparent 55%),
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+    radial-gradient(1200px 600px at 20% -10%, color-mix(in oklab, var(--accent) 32%, transparent), transparent 58%),
+    radial-gradient(1000px 500px at 80% 0%, color-mix(in oklab, var(--accent-2) 22%, transparent), transparent 58%),
     var(--bg);
+  background-size:
+    72px 72px,
+    72px 72px,
+    auto,
+    auto,
+    auto;
+  background-position:
+    -1px -1px,
+    -1px -1px,
+    0 0,
+    0 0,
+    0 0;
   line-height:1.55;
 }
 
@@ -84,10 +100,45 @@ body::after{
 a{color:inherit}
 a:hover{opacity:.92}
 
+/* Animated grain / noise overlay (subtle) */
+html::before{
+  content:"";
+  position: fixed;
+  inset: -40%;
+  z-index: -1;
+  pointer-events:none;
+  opacity: .11;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  transform: translate3d(0,0,0);
+  animation: grainMove 7s steps(7) infinite;
+}
+
+@keyframes grainMove{
+  0%{ transform: translate(0,0) }
+  10%{ transform: translate(-3%, -4%) }
+  20%{ transform: translate(-6%, 2%) }
+  30%{ transform: translate(4%, -6%) }
+  40%{ transform: translate(-4%, 7%) }
+  50%{ transform: translate(-8%, 4%) }
+  60%{ transform: translate(6%, 0%) }
+  70%{ transform: translate(0%, 6%) }
+  80%{ transform: translate(-6%, -2%) }
+  90%{ transform: translate(4%, 5%) }
+  100%{ transform: translate(0,0) }
+}
+
+@media (prefers-reduced-motion: reduce){
+  html::before{animation:none}
+}
+
 .container{max-width: 1040px; margin:0 auto; padding: 0 20px}
 .section{padding: 72px 0}
 .section--alt{background: rgba(255,255,255,.03); border-top:1px solid var(--border); border-bottom:1px solid var(--border)}
 .section__head{display:flex; gap:14px; align-items:baseline; justify-content:space-between; flex-wrap:wrap; margin-bottom:20px}
+
+/* About cutout removed */
 
 h1,h2,h3{line-height:1.15; margin:0 0 12px}
 h2{font-size:28px}
