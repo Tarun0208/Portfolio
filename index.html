@@ -192,6 +192,33 @@
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <button class="chat-launcher" type="button" aria-expanded="false" aria-controls="contact-chat" aria-label="Open contact assistant">
+    <span aria-hidden="true">💬</span>
+    <span>Contact assistant</span>
+</button>
+
+<section id="contact-chat" class="chatbot" aria-label="Contact assistant" hidden>
+    <div class="chatbot__panel" role="dialog" aria-modal="false" aria-labelledby="chatbot-title">
+        <div class="chatbot__header">
+            <div>
+                <p class="chatbot__eyebrow">Quick contact</p>
+                <h2 id="chatbot-title">Tarun’s assistant</h2>
+            </div>
+            <button class="chatbot__close" type="button" aria-label="Close contact assistant">×</button>
+        </div>
+        <div class="chatbot__messages" id="chatbot-messages" aria-live="polite"></div>
+        <form class="chatbot__form" id="lead-form">
+            <label class="chatbot__label" for="chatbot-input" id="chatbot-question">Your answer</label>
+            <div class="chatbot__input-row">
+                <input id="chatbot-input" name="answer" autocomplete="off" required>
+                <button class="chatbot__voice" id="chatbot-voice" type="button" aria-label="Speak your answer" title="Speak your answer">🎙️</button>
+                <button class="btn btn--primary" type="submit">Send</button>
+            </div>
+            <p class="chatbot__hint" id="chatbot-voice-status">Tap the mic to answer by voice.</p>
+        </form>
+    </div>
+</section>
+
+<script src="script.js"></script>
   </body>
 </html>
