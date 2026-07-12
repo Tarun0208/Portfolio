@@ -1,196 +1,198 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tarun — Portfolio</title>
-    <meta name="description" content="Tarun's personal portfolio: projects, skills, and contact." />
+    <meta name="description" content="Tarun's personal portfolio: projects, skills, and contact.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-
-    <header class="site-header">
-      <nav class="nav" aria-label="Primary">
+<header class="site-header">
+    <nav class="nav" aria-label="Primary">
         <a class="brand" href="#top">Tarun Kishore Bollur Nagesh</a>
-        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links">
-          Menu
-        </button>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
         <div id="nav-links" class="nav__links">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-          <button class="chip" type="button" id="theme-toggle" aria-label="Toggle theme">Theme</button>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+            <button class="chip" type="button" id="theme-toggle" aria-label="Toggle theme">Theme</button>
         </div>
-      </nav>
-    </header>
+    </nav>
+</header>
 
-    <main id="main">
-      <section id="top" class="hero section">
+<main id="main">
+    <section id="top" class="hero section">
         <div class="container hero__grid">
-          <div>
-            <p class="eyebrow">Software Developer</p>
-            <h1 class="hero__title">Hi, I’m <span class="accent">Tarun Kishore</span>.</h1>
-            <p class="hero__subtitle">
-              I build clean, reliable apps. I like Spring Boot, Kotlin, and shipping small things fast.
-            </p>
-            <div class="hero__cta">
-              <a class="btn btn--primary" href="#projects">View projects</a>
-              <a class="btn btn--ghost" href="#contact">Contact me</a>
-            </div>
-            <div class="hero__links" aria-label="Social links">
-              <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="#" aria-disabled="true" title="Add your resume link">Resume</a>
-            </div>
-          </div>
-
-          <div class="card hero__card">
-            <div class="avatar" aria-hidden="true">T</div>
             <div>
-              <h2 class="card__title">Quick info</h2>
-              <ul class="meta">
-                <li><span>Location:</span> Bay Area / Remote</li>
-                <li><span>Focus:</span> Backend + APIs</li>
-                <li><span>Currently:</span> Building portfolio projects</li>
-              </ul>
+                <p class="eyebrow">Software Developer 2</p>
+                <h1 class="hero__title">Hi, I’m <span class="accent">Tarun Kishore</span>.</h1>
+                <p class="hero__subtitle">Software Developer with 4+ years of experience building scalable, secure services using Kotlin/Java, Spring Boot, microservices, GraphQL, and REST APIs. I care about performance, reliability, and clean architecture.</p>
+                <div class="hero__cta">
+                    <a class="btn btn--primary" href="#projects">View projects</a>
+                    <a class="btn btn--ghost" href="#contact">Contact me</a>
+                </div>
+                <div class="hero__links">
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="Tarun_Software_Developer.docx" target="_blank" rel="noopener" download>Resume</a>
+                </div>
             </div>
-          </div>
+            <div class="card hero__card">
+                <div class="avatar">T</div>
+                <div>
+                    <h2 class="card__title">Quick info</h2>
+                    <ul class="meta">
+                        <li><span>Location:</span> San Diego, CA (Open to Remote)</li>
+                        <li><span>Focus:</span> Backend • Kotlin/Java • APIs</li>
+                        <li><span>Currently:</span> Backend Developer (Intuit)</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </section>
+    </section>
 
-      <section id="about" class="section">
+    <section id="about" class="section">
         <div class="container">
-          <h2>About</h2>
-          <p>
-            I’m a developer who enjoys turning requirements into working software. I care about clean code,
-            good defaults, and writing things that are easy to maintain.
-          </p>
-          <p>
-            This page is intentionally simple: a single file you can deploy anywhere.
-          </p>
+            <h2>About</h2>
+            <p>I’m a Software Developer with 4+ years of experience building secure, scalable applications and services using Kotlin/Java, Spring Boot, microservices, GraphQL, and REST APIs.</p>
+            <p>I’ve worked on authentication and authorization, performance engineering (load testing + gates), observability (dashboards/alerts), and resilience work like FMEA and controlled failure/chaos experiments. I enjoy collaborating with cross‑functional teams to ship production-ready systems.</p>
         </div>
-      </section>
+    </section>
 
-      <section id="projects" class="section section--alt">
+    <section id="projects" class="section section--alt">
         <div class="container">
-          <div class="section__head">
             <h2>Projects</h2>
-            <p class="muted">A few things I’ve built (replace these with your real projects).</p>
-          </div>
+            <p class="muted">A mix of academic and professional work. For client projects, I describe the problem/approach without sharing proprietary code.</p>
+            <div class="grid">
+                <article class="card project">
+                    <h3>Identity (Professional)</h3>
+                    <p class="muted"><strong>Account Context Options:</strong> Built a Kotlin/Spring Boot service using Clean/Onion Architecture, integrating GraphQL identity + account search, adding cursor-based pagination, and strengthening reliability with performance gates, dashboards/alerts, and controlled failure/FMEA testing.</p>
+                    <ul class="tags">
+                        <li>Kotlin</li>
+                        <li>Spring Boot</li>
+                        <li>GraphQL</li>
+                        <li>REST</li>
+                        <li>Microservices</li>
+                        <li>Gatling</li>
+                        <li>CI/CD</li>
+                        <li>Observability</li>
+                        <li>Chaos / FMEA</li>
+                        <li>Service Mesh</li>
+                    </ul>
+                </article>
 
-          <div class="grid">
-            <article class="card project">
-              <h3 class="project__title">MyApp (Spring Boot)</h3>
-              <p class="muted">REST API + dependency injection + clean structure.</p>
-              <ul class="tags">
-                <li>Java</li>
-                <li>Spring Boot</li>
-                <li>REST</li>
-              </ul>
-              <div class="project__links">
-                <a href="#" aria-disabled="true">Code</a>
-                <a href="#" aria-disabled="true">Demo</a>
-              </div>
-            </article>
+                <article class="card project">
+                    <h3>Enterprise Service Modernization (Professional)</h3>
+                    <p class="muted">Modernized and maintained backend integrations by migrating legacy services to Node.js while improving stability and performance. Built Spring-based services, implemented role-based access control with Spring Security, and delivered responsive UIs with React. Supported delivery with Jenkins CI/CD, Docker, and AWS deployments.</p>
+                    <ul class="tags">
+                        <li>Spring Boot</li>
+                        <li>Node.js</li>
+                        <li>React</li>
+                        <li>REST</li>
+                        <li>MongoDB</li>
+                        <li>Jenkins</li>
+                        <li>Docker</li>
+                        <li>AWS</li>
+                    </ul>
+                </article>
 
-            <article class="card project">
-              <h3 class="project__title">Portfolio Page</h3>
-              <p class="muted">Single-page responsive layout with accessibility basics.</p>
-              <ul class="tags">
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>Vanilla JS</li>
-              </ul>
-              <div class="project__links">
-                <a href="#" aria-disabled="true">Code</a>
-                <a href="#" aria-disabled="true">Live</a>
-              </div>
-            </article>
-
-            <article class="card project">
-              <h3 class="project__title">Kotlin Mini Tool</h3>
-              <p class="muted">A small CLI / utility (placeholder).</p>
-              <ul class="tags">
-                <li>Kotlin</li>
-                <li>Gradle</li>
-              </ul>
-              <div class="project__links">
-                <a href="#" aria-disabled="true">Code</a>
-                <a href="#" aria-disabled="true">Write-up</a>
-              </div>
-            </article>
-          </div>
+                <article class="card project">
+                    <h3>Student Login Web Application (Academic)</h3>
+                    <p class="muted">Built a student login web app using Spring Boot + Thymeleaf with MySQL. Implemented CRUD using Spring Data repositories and secure authentication (login/logout) with Spring Security.</p>
+                    <ul class="tags">
+                        <li>Java</li>
+                        <li>Spring Boot</li>
+                        <li>Spring Security</li>
+                        <li>Spring Data</li>
+                        <li>MySQL</li>
+                        <li>Thymeleaf</li>
+                    </ul>
+                </article>
+            </div>
         </div>
-      </section>
+    </section>
 
-      <section id="skills" class="section">
+    <section id="skills" class="section">
         <div class="container">
-          <div class="section__head">
             <h2>Skills</h2>
-            <p class="muted">Pick the ones that are true for you.</p>
-          </div>
-
-          <div class="grid grid--2">
-            <div class="card">
-              <h3>Backend</h3>
-              <ul class="list">
-                <li>Java / Kotlin</li>
-                <li>Spring Boot</li>
-                <li>REST APIs</li>
-                <li>SQL basics</li>
-              </ul>
+            <div class="grid grid--2">
+                <div class="card">
+                    <h3>Backend</h3>
+                    <ul>
+                        <li>Kotlin, Java (8/11)</li>
+                        <li>Spring Boot, Spring MVC, Spring Security</li>
+                        <li>Microservices, Clean/Onion Architecture</li>
+                        <li>REST APIs, GraphQL</li>
+                        <li>Authentication & Authorization (RBAC, entitlement-based access)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Cloud / DevOps / Reliability</h3>
+                    <ul>
+                        <li>AWS: EC2, IAM, S3, CloudWatch, Auto Scaling, ELB</li>
+                        <li>Docker, Jenkins, CI/CD pipelines</li>
+                        <li>Performance testing: Gatling</li>
+                        <li>Observability: dashboards, alerts, correlated logging</li>
+                        <li>Resilience: FMEA, controlled failure/chaos testing</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Frontend (when needed)</h3>
+                    <ul>
+                        <li>React, Angular</li>
+                        <li>JavaScript / TypeScript, HTML, CSS</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Data / Tooling</h3>
+                    <ul>
+                        <li>MySQL, MongoDB, DynamoDB, SQL Server</li>
+                        <li>Git</li>
+                        <li>IntelliJ, VS Code</li>
+                    </ul>
+                </div>
             </div>
-            <div class="card">
-              <h3>Engineering</h3>
-              <ul class="list">
-                <li>Git</li>
-                <li>Testing (unit/integration)</li>
-                <li>Debugging & logs</li>
-                <li>Clean code & refactoring</li>
-              </ul>
-            </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      <section id="contact" class="section section--alt">
+    <section id="contact" class="section section--alt">
         <div class="container">
-          <h2>Contact</h2>
-          <p>
-            The simplest contact method is email. You can also link your LinkedIn/GitHub above.
-          </p>
-
-          <div class="card contact">
-            <div>
-              <p class="muted">Email</p>
-              <p class="contact__big"><a href="mailto:tarunkb.go@gmail.com">tarunkb.go@gmail.com</a></p>
-              <p class="muted">Usually I reply fastest over email.</p>
+            <h2>Contact</h2>
+            <p>Email is the simplest contact method. You can also reach me by phone or LinkedIn.</p>
+            <div class="card contact">
+                <div>
+                    <p class="muted">Email</p>
+                    <p><a href="mailto:tarunkb.go@gmail.com">tarunkb.go@gmail.com</a></p>
+                </div>
+                <div>
+                    <p class="muted">Phone</p>
+                    <p><a href="tel:+15125019910">+1 (512) 501-9910</a></p>
+                </div>
+                <div>
+                    <p class="muted">LinkedIn</p>
+                    <p><a href="https://www.linkedin.com/" target="_blank" rel="noopener">View profile</a></p>
+                </div>
+                <div class="contact__actions">
+                    <a class="btn btn--primary" href="mailto:tarunkb.go@gmail.com">Send email</a>
+                    <a class="btn btn--ghost" href="tel:+15125019910">Call</a>
+                </div>
             </div>
-            <div class="contact__actions">
-              <a class="btn btn--primary" href="mailto:tarunkb.go@gmail.com">Send email</a>
-              <button class="btn btn--ghost" type="button" id="copy-email">Copy email</button>
-            </div>
-          </div>
-
-          <p class="fineprint muted">
-            © <span id="year"></span> Tarun. Built with plain HTML/CSS.
-          </p>
+            <p class="fineprint muted">© <span id="year"></span> Tarun. Built with plain HTML/CSS.</p>
         </div>
-      </section>
-    </main>
+    </section>
+</main>
 
-    <footer class="site-footer">
-      <div class="container">
+<footer class="site-footer">
+    <div class="container">
         <span class="muted">Made small on purpose.</span>
-      </div>
-    </footer>
+    </div>
+</footer>
 
     <button class="chat-launcher" type="button" aria-expanded="false" aria-controls="contact-chat" aria-label="Open contact assistant">
     <span aria-hidden="true">💬</span>
