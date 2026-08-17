@@ -15,19 +15,3 @@ python3 -m http.server 5173
 
 Then open: http://localhost:5173
 
-## Customize
-
-- `index.html`
-  - Replace name/title/bio
-  - Update GitHub/LinkedIn links
-  - Replace placeholder projects
-  - Set your email in the `mailto:` links
-- `styles.css` for theme/layout
-
-## Deploy
-
-You can deploy this folder to:
-- GitHub Pages
-- Netlify
-- Vercel (as static)
-- Any static host
