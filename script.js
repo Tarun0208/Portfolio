@@ -1,33 +1,23 @@
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-// Theme toggle (dark/light)
-const root = document.documentElement;
-const themeToggle = document.getElementById('theme-toggle');
-
-function setTheme(theme) {
-  if (theme) root.setAttribute('data-theme', theme);
-  else root.removeAttribute('data-theme');
-  try {
-    localStorage.setItem('theme', theme || '');
-  } catch {}
-}
-
-// init theme
-try {
-  const saved = localStorage.getItem('theme');
-  if (saved) setTheme(saved);
-} catch {}
-
-if (themeToggle) {
-  const label = () => (root.getAttribute('data-theme') === 'light' ? 'Light' : 'Dark');
-  themeToggle.textContent = label();
-
-  themeToggle.addEventListener('click', () => {
-    const next = root.getAttribute('data-theme') === 'light' ? '' : 'light';
-    setTheme(next);
-    themeToggle.textContent = label();
-  });
+// Reveal sections as they enter the viewport, keeping the long page easy to scan.
+const revealItems = document.querySelectorAll('[data-reveal]');
+revealItems.forEach((item, index) => {
+  item.classList.add('js-reveal');
+  item.style.transitionDelay = `${Math.min(index * 55, 220)}ms`;
+});
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.12 });
+  revealItems.forEach((item) => revealObserver.observe(item));
+} else {
+  revealItems.forEach((item) => item.classList.add('is-visible'));
 }
 
 // Mobile nav toggle
@@ -257,3 +247,144 @@ leadForm?.addEventListener('submit', (e) => {
     document.getElementById('chatbot-reset')?.addEventListener('click', resetChat);
   }
 });
+
+// Removed extra cubes (Three.js background) as requested
+// (function init3dBackground() {
+//   const canvas = document.getElementById('bg-canvas');
+//   if (!canvas || typeof THREE === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+//   const scene = new THREE.Scene();
+//   const camera = new THREE.PerspectiveCamera(42, innerWidth / innerHeight, .1, 100);
+//   camera.position.set(0, .1, 6.4);
+//   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+//   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.7));
+//   renderer.setSize(innerWidth, innerHeight);
+//   // Layered wireframe geometry: quiet, technical, and intentionally abstract.
+//   const group = new THREE.Group();
+//   const material = new THREE.LineBasicMaterial({ color: 0xc7ff5e, transparent: true, opacity: .28 });
+//   for (let i = 0; i < 5; i += 1) {
+//     const geometry = new THREE.IcosahedronGeometry(1.2 + i * .22, 1);
+//     const wire = new THREE.LineSegments(new THREE.EdgesGeometry(geometry), material.clone());
+//     wire.material.opacity = .28 - i * .035;
+//     wire.material.color.setHex(i % 2 ? 0x8da8ff : 0xc7ff5e);
+//     wire.rotation.set(i * .4, i * .7, i * .2);
+//     group.add(wire);
+//   }
+//   const satelliteMaterial = new THREE.MeshBasicMaterial({ color: 0xc7ff5e, wireframe: true, transparent: true, opacity: .72 });
+//   const satellites = new THREE.Group();
+//   [[-1.7, .8, .1], [1.75, .65, -.2], [-1.55, -1.05, .15], [1.45, -1.15, -.1], [.15, 1.75, .2]].forEach((position, index) => {
+//     const satellite = new THREE.Mesh(new THREE.OctahedronGeometry(index % 2 ? .11 : .16, 0), satelliteMaterial.clone());
+//     satellite.material.color.setHex(index % 2 ? 0x8da8ff : 0xc7ff5e);
+//     satellite.position.set(...position);
+//     satellites.add(satellite);
+//   });
+//   group.add(satellites);
+//   const particlePositions = new Float32Array(240);
+//   for (let i = 0; i < particlePositions.length; i += 3) {
+//     particlePositions[i] = (Math.random() - .5) * 5.4;
+//     particlePositions[i + 1] = (Math.random() - .5) * 4.2;
+//     particlePositions[i + 2] = (Math.random() - .5) * 2.2;
+//   }
+//   const particleGeometry = new THREE.BufferGeometry();
+//   particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+//   const particles = new THREE.Points(particleGeometry, new THREE.PointsMaterial({ color: 0x8da8ff, size: .018, transparent: true, opacity: .5, depthWrite: false }));
+//   group.add(particles);
+//   group.position.set(1.35, .05, 0);
+//   scene.add(group);
+
+//   const pointer = { x: 0, y: 0 };
+//   let scrollRotation = -.45;
+//   addEventListener('pointermove', (event) => {
+//     pointer.x = (event.clientX / innerWidth - .5) * 2;
+//     pointer.y = (event.clientY / innerHeight - .5) * 2;
+//   }, { passive: true });
+//   addEventListener('scroll', () => { scrollRotation = -.45 + scrollY * .0028; }, { passive: true });
+//   addEventListener('resize', () => {
+//     camera.aspect = innerWidth / innerHeight;
+//     camera.updateProjectionMatrix();
+//     renderer.setSize(innerWidth, innerHeight);
+//   });
+
+//   const clock = new THREE.Clock();
+//   function animate() {
+//     requestAnimationFrame(animate);
+//     const time = clock.getElapsedTime();
+//     group.rotation.y += (scrollRotation - group.rotation.y) * .035;
+//     group.rotation.x += (pointer.y * .1 - group.rotation.x) * .02;
+//     group.position.x += (1.35 + pointer.x * .22 - group.position.x) * .018;
+//     group.position.y = .05 + Math.sin(time * .5) * .07;
+//     satellites.rotation.y -= .003;
+//     satellites.rotation.x += .001;
+//     particles.rotation.y += .0005;
+//     renderer.render(scene, camera);
+//   }
+//   animate();
+// })();
+
+(function init3dBackground() {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas || typeof THREE === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(42, innerWidth / innerHeight, .1, 100);
+  camera.position.set(0, .1, 6.4);
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.7));
+  renderer.setSize(innerWidth, innerHeight);
+
+  const group = new THREE.Group();
+  const material = new THREE.LineBasicMaterial({ color: 0xf4c95d, transparent: true, opacity: .34 });
+  for (let i = 0; i < 5; i += 1) {
+    const geometry = new THREE.IcosahedronGeometry(1.2 + i * .22, 1);
+    const wire = new THREE.LineSegments(new THREE.EdgesGeometry(geometry), material.clone());
+    wire.material.opacity = .34 - i * .035;
+    wire.material.color.setHex(i % 2 ? 0xe8a93a : 0xffd978);
+    wire.rotation.set(i * .4, i * .7, i * .2);
+    group.add(wire);
+  }
+  const particlePositions = new Float32Array(720);
+  for (let i = 0; i < particlePositions.length; i += 3) {
+    particlePositions[i] = (Math.random() - .5) * 5.4;
+    particlePositions[i + 1] = (Math.random() - .5) * 4.2;
+    particlePositions[i + 2] = (Math.random() - .5) * 2.2;
+  }
+  const particleGeometry = new THREE.BufferGeometry();
+  particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+  group.add(new THREE.Points(particleGeometry, new THREE.PointsMaterial({ color: 0xf4c95d, size: .022, transparent: true, opacity: .52, depthWrite: false })));
+  const sparkPositions = new Float32Array(180);
+  for (let i = 0; i < sparkPositions.length; i += 3) {
+    sparkPositions[i] = (Math.random() - .5) * 5.2;
+    sparkPositions[i + 1] = (Math.random() - .5) * 4;
+    sparkPositions[i + 2] = (Math.random() - .5) * 2;
+  }
+  const sparkGeometry = new THREE.BufferGeometry();
+  sparkGeometry.setAttribute('position', new THREE.BufferAttribute(sparkPositions, 3));
+  const sparkMaterial = new THREE.PointsMaterial({ color: 0xffe8a3, size: .038, transparent: true, opacity: .62, depthWrite: false });
+  group.add(new THREE.Points(sparkGeometry, sparkMaterial));
+  group.position.set(1.35, .05, 0);
+  scene.add(group);
+
+  const pointer = { x: 0, y: 0 };
+  let scrollRotation = -.45;
+  addEventListener('pointermove', (event) => {
+    pointer.x = (event.clientX / innerWidth - .5) * 2;
+    pointer.y = (event.clientY / innerHeight - .5) * 2;
+  }, { passive: true });
+  addEventListener('scroll', () => { scrollRotation = -.45 + scrollY * .0028; }, { passive: true });
+  addEventListener('resize', () => {
+    camera.aspect = innerWidth / innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+  });
+  const clock = new THREE.Clock();
+  function animate() {
+    requestAnimationFrame(animate);
+    const time = clock.getElapsedTime();
+    group.rotation.y += (scrollRotation - group.rotation.y) * .035;
+    group.rotation.x += (pointer.y * .1 - group.rotation.x) * .02;
+    group.position.x += (1.35 + pointer.x * .22 - group.position.x) * .018;
+    group.position.y = .05 + Math.sin(time * .5) * .07;
+    sparkMaterial.opacity = .48 + Math.sin(time * 2.2) * .16;
+    renderer.render(scene, camera);
+  }
+  animate();
+})();

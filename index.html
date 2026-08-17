@@ -7,10 +7,12 @@
     <meta name="description" content="Tarun's personal portfolio: projects, skills, and contact.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<canvas id="bg-canvas" class="background-canvas"></canvas>
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
@@ -22,7 +24,6 @@
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
-            <button class="chip" type="button" id="theme-toggle" aria-label="Toggle theme">Theme</button>
         </div>
     </nav>
 </header>
@@ -31,47 +32,65 @@
     <section id="top" class="hero section">
         <div class="container hero__grid">
             <div>
-                <p class="eyebrow">Software Developer 2</p>
-                <h1 class="hero__title">Hi, I’m <span class="accent">Tarun Kishore</span>.</h1>
+                <p class="eyebrow"><span class="status-dot"></span> Software Developer 2 · San Diego, CA</p>
+                <h1 class="hero__title">Building the <span class="accent">systems</span> behind better products.</h1>
                 <p class="hero__subtitle">Software Developer with 4+ years of experience building scalable, secure services using Kotlin/Java, Spring Boot, microservices, GraphQL, and REST APIs. I care about performance, reliability, and clean architecture.</p>
                 <div class="hero__cta">
-                    <a class="btn btn--primary" href="#projects">View projects</a>
+                    <a class="btn btn--primary" href="#projects">Explore my work <span>↗</span></a>
                     <a class="btn btn--ghost" href="#contact">Contact me</a>
                 </div>
                 <div class="hero__links">
-                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
-                    <a href="Tarun_Software_Developer.docx" target="_blank" rel="noopener" download>Resume</a>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn ↗</a>
+                    <a href="Tarun_Software_Developer.docx" target="_blank" rel="noopener" download>Download resume ↓</a>
                 </div>
             </div>
-            <div class="card hero__card">
-                <div class="avatar">T</div>
-                <div>
-                    <h2 class="card__title">Quick info</h2>
-                    <ul class="meta">
-                        <li><span>Location:</span> San Diego, CA (Open to Remote)</li>
-                        <li><span>Focus:</span> Backend • Kotlin/Java • APIs</li>
-                        <li><span>Currently:</span> Backend Developer (Intuit)</li>
-                    </ul>
-                </div>
+            <div class="hero__visual" aria-label="Interactive 3D abstract sculpture">
+                <div class="visual__line visual__line--one"></div>
+                <div class="visual__line visual__line--two"></div>
             </div>
+        </div>
+        <div class="hero__scroll">Scroll to explore <span>↓</span></div>
+    </section>
+
+    <section class="signal-strip" aria-label="Profile highlights">
+        <div class="container signal-strip__grid">
+            <div><strong>4+</strong><span>years shipping software</span></div>
+            <div><strong>Java</strong><span>Spring Boot · Kotlin · APIs</span></div>
+            <div><strong>Production</strong><span>performance · reliability · observability</span></div>
         </div>
     </section>
 
     <section id="about" class="section">
         <div class="container">
-            <h2>About</h2>
+            <div class="section-kicker">01 — Profile</div><h2>Engineering with clarity.</h2>
             <p>I’m a Software Developer with 4+ years of experience building secure, scalable applications and services using Kotlin/Java, Spring Boot, microservices, GraphQL, and REST APIs.</p>
             <p>I’ve worked on authentication and authorization, performance engineering (load testing + gates), observability (dashboards/alerts), and resilience work like FMEA and controlled failure/chaos experiments. I enjoy collaborating with cross‑functional teams to ship production-ready systems.</p>
+            <div class="principles-grid">
+                <article class="principle" data-reveal><span>01</span><h3>Make it clear</h3><p>Simple boundaries, readable systems, and decisions teams can explain.</p></article>
+                <article class="principle" data-reveal><span>02</span><h3>Make it resilient</h3><p>Design for failure with observability, testing, and useful operational signals.</p></article>
+                <article class="principle" data-reveal><span>03</span><h3>Make it ship</h3><p>Move from idea to dependable production software with focused iteration.</p></article>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section section--alt">
+        <div class="container">
+            <div class="section-kicker">01.5 — Experience</div><h2>A track record of shipping.</h2>
+            <div class="timeline">
+                <article class="timeline__item" data-reveal><div class="timeline__date">Current</div><div><h3>Backend Developer · Intuit</h3><p>Building secure identity and account-context services with Kotlin, Spring Boot, GraphQL, and REST.</p></div></article>
+                <article class="timeline__item" data-reveal><div class="timeline__date">Recent</div><div><h3>Service modernization</h3><p>Modernized legacy integrations, strengthened access control, and supported React experiences with CI/CD and AWS.</p></div></article>
+                <article class="timeline__item" data-reveal><div class="timeline__date">Foundation</div><div><h3>Java web applications</h3><p>Built secure CRUD applications with Spring Boot, Spring Security, Thymeleaf, and MySQL.</p></div></article>
+            </div>
         </div>
     </section>
 
     <section id="projects" class="section section--alt">
         <div class="container">
-            <h2>Projects</h2>
+            <div class="section-kicker">02 — Selected work</div><h2>Systems that hold up.</h2>
             <p class="muted">A mix of academic and professional work. For client projects, I describe the problem/approach without sharing proprietary code.</p>
-            <div class="grid">
-                <article class="card project">
-                    <h3>Identity (Professional)</h3>
+            <div class="grid project-grid">
+                    <article class="card project" data-reveal>
+                    <div class="project__index">01 / Professional</div><h3>Identity platform</h3>
                     <p class="muted"><strong>Account Context Options:</strong> Built a Kotlin/Spring Boot service using Clean/Onion Architecture, integrating GraphQL identity + account search, adding cursor-based pagination, and strengthening reliability with performance gates, dashboards/alerts, and controlled failure/FMEA testing.</p>
                     <ul class="tags">
                         <li>Kotlin</li>
@@ -87,8 +106,8 @@
                     </ul>
                 </article>
 
-                <article class="card project">
-                    <h3>Enterprise Service Modernization (Professional)</h3>
+                <article class="card project" data-reveal>
+                    <div class="project__index">02 / Professional</div><h3>Service modernization</h3>
                     <p class="muted">Modernized and maintained backend integrations by migrating legacy services to Node.js while improving stability and performance. Built Spring-based services, implemented role-based access control with Spring Security, and delivered responsive UIs with React. Supported delivery with Jenkins CI/CD, Docker, and AWS deployments.</p>
                     <ul class="tags">
                         <li>Spring Boot</li>
@@ -102,8 +121,8 @@
                     </ul>
                 </article>
 
-                <article class="card project">
-                    <h3>Student Login Web Application (Academic)</h3>
+                <article class="card project" data-reveal>
+                    <div class="project__index">03 / Academic</div><h3>Student login</h3>
                     <p class="muted">Built a student login web app using Spring Boot + Thymeleaf with MySQL. Implemented CRUD using Spring Data repositories and secure authentication (login/logout) with Spring Security.</p>
                     <ul class="tags">
                         <li>Java</li>
@@ -120,7 +139,7 @@
 
     <section id="skills" class="section">
         <div class="container">
-            <h2>Skills</h2>
+            <div class="section-kicker">03 — Capabilities</div><h2>The toolkit.</h2>
             <div class="grid grid--2">
                 <div class="card">
                     <h3>Backend</h3>
@@ -158,12 +177,15 @@
                     </ul>
                 </div>
             </div>
+            <div class="tech-cloud" aria-label="Technology keywords">
+                <span>JAVA</span><span>SPRING BOOT</span><span>KOTLIN</span><span>GRAPHQL</span><span>REACT</span><span>AWS</span><span>DOCKER</span><span>GATLING</span><span>MYSQL</span><span>CI/CD</span>
+            </div>
         </div>
     </section>
 
     <section id="contact" class="section section--alt">
         <div class="container">
-            <h2>Contact</h2>
+            <div class="section-kicker">04 — Contact</div><h2>Let’s build something dependable.</h2>
             <p>Email is the simplest contact method. You can also reach me by phone or LinkedIn.</p>
             <div class="card contact">
                 <div>
